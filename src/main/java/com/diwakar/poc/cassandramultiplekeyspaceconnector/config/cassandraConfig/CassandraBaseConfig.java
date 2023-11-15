@@ -2,8 +2,12 @@ package com.diwakar.poc.cassandramultiplekeyspaceconnector.config.cassandraConfi
 
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.cassandra.config.AbstractCassandraConfiguration;
+import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
+@Configuration
+@EnableCassandraRepositories(basePackages = { "com.paytm.cts.repo.cassandra" })
 public abstract class CassandraBaseConfig extends AbstractCassandraConfiguration {
 
     @Value("${spring.data.cassandra.contact-points}")
