@@ -1,14 +1,19 @@
 package com.diwakar.poc.cassandramultiplekeyspaceconnector.config.cassandraConfig;
 
 import com.datastax.oss.driver.api.core.CqlSession;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.cassandra.config.CassandraSessionFactoryBean;
+import org.springframework.data.cassandra.core.CassandraAdminOperations;
 import org.springframework.data.cassandra.core.CassandraAdminTemplate;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
 import java.net.InetSocketAddress;
 
+@Configuration
 @EnableCassandraRepositories(basePackages = "com.diwakar.poc.cassandramultiplekeyspaceconnector.repo.space1", cassandraTemplateRef = "space1Template")
 public class CassandraConnectionManager1 extends CassandraBaseConfig {
 
@@ -22,7 +27,7 @@ public class CassandraConnectionManager1 extends CassandraBaseConfig {
 
     @Override
     public String[] getEntityBasePackages() {
-        return new String[]{"com.diwakar.poc.cassandramultiplekeyspaceconnector.repo.space1"};
+        return new String[]{"com.diwakar.poc.cassandramultiplekeyspaceconnector.model.space1"};
     }
 
     public CqlSession session() {

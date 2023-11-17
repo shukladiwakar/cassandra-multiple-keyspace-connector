@@ -1,25 +1,31 @@
-package com.diwakar.poc.cassandramultiplekeyspaceconnector.repo.space1;
+package com.diwakar.poc.cassandramultiplekeyspaceconnector.model.space2;
 
+import lombok.Builder;
+import lombok.Data;
 import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
-import org.springframework.data.cassandra.repository.CassandraRepository;
 
-@Table("emp_space2")
-public class Employee {
+import java.io.Serializable;
+
+@Data
+@Table(value = "emp_space2")
+@Builder
+public class Employee2 implements Serializable {
 
     @PrimaryKey
     @Column("emp_id")
     int emp_id;
+
     @Column("emp_name")
     String emp_name;
+
     @Column("emp_city")
-
     String emp_city;
+
     @Column("emp_sal")
-
     int emp_sal;
-    @Column("emp_phone")
 
+    @Column("emp_phone")
     int emp_phone;
 }
